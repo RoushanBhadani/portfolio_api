@@ -2,15 +2,8 @@
   "name": "portfolio_api",
   "version": "1.0.0",
   "type": "module",
-  "scripts": {
-    "dev": "vercel dev",
-    "build": "vercel build",
-    "start": "vercel dev"
-  },
   "dependencies": {
     "dotenv": "^17.2.1",
-    "express": "^4.18.2",
-    "mongoose": "^7.6.1",
-    "serverless-http": "^3.2.0"
+    "mongoose": "^7.6.1"
   }
 }
