@@ -28,12 +28,21 @@
 
 import connectDB from '../utils/db.js';
 import User from '../models/User.js';
+import Cors from 'cors';
+import initMiddleware from '../utils/init-middleware.js';
+
+// Initialize the cors middleware
+const cors = initMiddleware(
+  Cors({
+    origin: '*', // Change to 'https://your-frontend.com' in production
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+  })
+);
 
 export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.setHeader('Access-Control-Allow-Origin', '*'); 
-  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  // Run CORS middleware first
+  await cors(req, res);
 
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
@@ -60,3 +69,4 @@ export default async function handler(req, res) {
     return res.status(500).json({ message: 'Internal Server Error', error: error.message });
   }
 }
+

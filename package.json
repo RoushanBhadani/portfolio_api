@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^17.2.1",
     "mongoose": "^7.6.1"
   }
