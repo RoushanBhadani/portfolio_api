@@ -1,22 +1,26 @@
+
+
+
+
+
 import express from 'express';
-import User from '../models/User.js';
+import Portfolio from '../models/portfolio.js';
 import connectDB from '../utils/db.js';
 
 const router = express.Router();
 
-// Connect once when module loads
 connectDB();
 
 router.get('/', async (req, res) => {
-  const users = await User.find();
+  const portfolio = await Portfolio.find();
   res.status(200).json(portfolio);
 });
 
 router.post('/', async (req, res) => {
   const { firstname, lastname, mobile, email, description } = req.body;
-  const newUser = new User({ firstname, lastname, mobile, email, description });
-  await newUser.save();
-  res.status(201).json(newUser);
+  const newPortfolio = new Portfolio({ firstname, lastname, mobile, email, description });
+  await newPortfolio.save();
+  res.status(201).json(newPortfolio);
 });
 
 export default router;
