@@ -11,6 +11,9 @@ const router = express.Router();
 
 connectDB();
 
+router.use(cors());
+router.use(express.json());
+
 router.get('/', async (req, res) => {
   const portfolio = await Portfolio.find();
   res.status(200).json(portfolio);

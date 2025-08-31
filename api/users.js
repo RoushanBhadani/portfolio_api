@@ -1,11 +1,11 @@
 import connectDB from '../utils/db.js';
 import Cors from 'cors';
 import initMiddleware from '../utils/init-middleware.js';
-import { Portfolio } from '../models/portfolio.js';
+import {Portfolio} from '../models/portfolio.js';
 
 const cors = initMiddleware(
   Cors({
-    origin: 'https://roushan-porfolio.vercel.app', 
+    origin: '*', 
     methods: ['GET', 'POST', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
   })
