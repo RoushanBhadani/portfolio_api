@@ -4,7 +4,7 @@
 
 
 import express from 'express';
-import {Portfolio, Subscriber} from '../models/portfolio.js';
+import Portfolio from '../models/portfolio.js';
 import connectDB from '../utils/db.js';
 
 const router = express.Router();
@@ -22,17 +22,5 @@ router.post('/', async (req, res) => {
   await newPortfolio.save();
   res.status(201).json(newPortfolio);
 });
-
-router.get("/subscribe", async(req, res) => {
-  const subcriber = await Subscriber.find();
-  res.status(200).json(subcriber)
-})
-
-router.post('/subscribe', async(req, res) => {
-  const { fullname, dob, email } = res.body;
-  const newSubscriber = new Subscriber({ fullname, dob, email });
-  await newSubscriber.save();
-  res.status(201).json(newSubscriber)
-})
 
 export default router;
