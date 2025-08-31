@@ -5,7 +5,7 @@ import { Portfolio } from '../models/portfolio.js';
 
 const cors = initMiddleware(
   Cors({
-    origin: '*', 
+    origin: 'https://roushan-porfolio.vercel.app', 
     methods: ['GET', 'POST', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
   })
