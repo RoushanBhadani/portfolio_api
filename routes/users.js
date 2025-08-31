@@ -1,8 +1,4 @@
 
-
-
-
-
 import express from 'express';
 import {Portfolio, Subscriber} from '../models/portfolio.js';
 import connectDB from '../utils/db.js';
