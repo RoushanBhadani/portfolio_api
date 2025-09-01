@@ -2,7 +2,7 @@ import connectDB from '../utils/db.js';
 import Cors from 'cors';
 import initMiddleware from '../utils/init-middleware.js';
 import Portfolio from '../models/portfolio.js';
-import emailjs from 'emailjs-com';
+import nodemailer from 'nodemailer';
 
 const cors = initMiddleware(
   Cors({
