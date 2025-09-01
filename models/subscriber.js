@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const subscriberSchema = new mongoose.Schema({
   fullname: { type: String, required: true },
-  dob: { type: Date, require: true },
+  dob: { type: Date, required: true },
   email: { type: String, required: true, unique: true },
 });
 
