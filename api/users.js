@@ -2,7 +2,6 @@ import connectDB from '../utils/db.js';
 import Cors from 'cors';
 import initMiddleware from '../utils/init-middleware.js';
 import Portfolio from '../models/portfolio.js';
-import nodemailer from 'nodemailer';
 
 const cors = initMiddleware(
   Cors({
@@ -31,26 +30,6 @@ export default async function handler(req, res) {
       const { firstname, lastname, mobile, email, description } = req.body;
       const newPortfolio = new Portfolio({ firstname, lastname, mobile, email, description });
       await newPortfolio.save();
-      try {
-        const transporter = nodemailer.createTransport({
-          service: 'gmail',
-          auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASS
-          }
-        });
-
-        await transporter.sendMail({
-          from: process.env.EMAIL_USER,
-          to: email,
-          subject: 'Portfolio Submission',
-          text: `Name: ${firstname} ${lastname || ""}\nMessage: ${description}\nTime: ${new Date().toLocaleString()}`,
-        });
-
-        console.log('Email sent successfully');
-      } catch (err) {
-        console.error('Email Error:', err);
-      }
       return res.status(201).json(newPortfolio);
     }
 
